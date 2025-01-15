@@ -6,7 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    name: ${{ github.ref_name }}_${{ github.run_id }}_${{ steps.date.outputs.date }}
+    name: ${{ github.ref_name }}_${{ github.run_id }}
     permissions:
       contents: read
       packages: write
