@@ -16,6 +16,12 @@ jobs:
     - name: Get current date
       id: date
       run: echo "date=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+    - name: print_date
+      run: echo $date
+
+    - name: Print_reponame
+      run: echo $GITHUB_REPOSITORY
       
     # Your build steps here
     - name: Build
