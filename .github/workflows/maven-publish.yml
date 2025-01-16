@@ -6,7 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    name: ${{ github.ref_name }}_${{ github.run_id }}
+    name: ${{ github.ref_name }}_${{ github.run_number }}
     # env:
     #   REPO_NAME: ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
     permissions:
