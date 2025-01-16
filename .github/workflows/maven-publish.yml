@@ -7,8 +7,8 @@ jobs:
 
     runs-on: ubuntu-latest
     name: ${{ github.ref_name }}_${{ github.run_id }}
-    env:
-      REPO_NAME: ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
+    # env:
+    #   REPO_NAME: ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
     permissions:
       contents: read
       packages: write
@@ -21,6 +21,10 @@ jobs:
 
     - name: print_date
       run: echo $date
+
+    - name: Set ENV variables
+      run: |
+        echo "REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> $GITHUB_ENV
 
     - name: Print_reponame
       run: echo $REPO_NAME
