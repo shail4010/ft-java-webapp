@@ -24,7 +24,6 @@ jobs:
       run: |
         echo "date=$(date +'%d%m%Y')" >> $GITHUB_ENV
         echo pwd
-        # COUNTER=$((${{ github.run_number }}))
         echo "Counter value: $COUNTER"
         echo "versionNumber=${MajorMinor}.$COUNTER" >> $GITHUB_ENV
 
