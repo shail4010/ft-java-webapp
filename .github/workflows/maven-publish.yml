@@ -4,8 +4,7 @@ on: workflow_dispatch
 
 env:
   MajorMinor: '1.0'
-  Revision: $[counter(variables['version.MajorMinor'], 0)]
-  versionNumber: '$MajorMinor.$Revision'
+  COUNTER: $github.run_number
 
 jobs:
   build:
@@ -25,6 +24,9 @@ jobs:
       run: |
         echo "date=$(date +'%d%m%Y')" >> $GITHUB_ENV
         echo $pwd
+        # COUNTER=$((${{ github.run_number }}))
+        echo "Counter value: $COUNTER"
+        echo "VERSION=${{ env.MAJOR_MINOR }}.$COUNTER" >> $GITHUB_ENV
         echo $versionNumber
 
     - name: print_date
