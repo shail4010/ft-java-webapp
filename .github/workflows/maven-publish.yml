@@ -32,6 +32,9 @@ jobs:
         echo "versionNumber=1.0" >> $GITHUB_ENV
         echo $versionNumber
 
+    - name: print_version
+      run: echo $versionNumber
+
     - name: print_date
       run: echo $date
 
