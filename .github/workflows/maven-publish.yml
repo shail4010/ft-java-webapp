@@ -23,10 +23,7 @@ jobs:
       id: date
       run: |
         echo "date=$(date +'%d%m%Y')" >> $GITHUB_ENV
-        echo $pwd
-        MAJOR_MINOR=$((${{ env.MajorMinor }}))
-        echo ${{ env.MAJOR_MINOR }}
-        echo "MAJOR_MINOR value: $MAJOR_MINOR"
+        echo pwd
         COUNTER=$((${{ github.run_number }}))
         echo "Counter value: $COUNTER"
         echo "versionNumber=${MajorMinor}.$COUNTER" >> $GITHUB_ENV
