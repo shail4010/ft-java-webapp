@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 env:
   MajorMinor: '1.0'
-  # COUNTER: $github.run_number
+  COUNTER: ${{ github.run_number }}
 
 jobs:
   build:
