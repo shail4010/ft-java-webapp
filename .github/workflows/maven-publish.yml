@@ -2,6 +2,11 @@ name: Maven Package
 
 on: workflow_dispatch
 
+env:
+  MajorMinor: '1.0'
+  Revision: $[counter(variables['version.MajorMinor'], 0)]
+  versionNumber: '$MajorMinor.$Revision'
+
 jobs:
   build:
 
@@ -17,7 +22,10 @@ jobs:
     - uses: actions/checkout@v4
     - name: Get current date
       id: date
-      run: echo "date=$(date +'%d%m%Y')" >> $GITHUB_ENV
+      run: |
+        echo "date=$(date +'%d%m%Y')" >> $GITHUB_ENV
+        echo $pwd
+        echo $versionNumber
 
     - name: print_date
       run: echo $date
