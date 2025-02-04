@@ -1,0 +1,49 @@
+name: build Package
+
+on: workflow_dispatch
+
+env:
+  MajorMinor: '1.0'
+  COUNTER: ${{ github.run_number }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    name: ${{ github.ref_name }}_${{ github.run_number }}
+    # env:
+    #   REPO_NAME: ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Get current date
+      id: date
+      run: |
+        echo "date=$(date +'%d%m%Y')" >> $GITHUB_ENV
+        echo pwd
+        echo "Counter value: $COUNTER"
+        echo "versionNumber=${MajorMinor}.$COUNTER" >> $GITHUB_ENV
+
+    - name: print_version
+      run: echo $versionNumber
+
+    - name: print_date
+      run: echo $date
+
+    - name: Set ENV variables
+      run: |
+        echo "REPO_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}" >> $GITHUB_ENV
+
+    - name: Print_reponame
+      run: echo $REPO_NAME
+      
+    # Your build steps here
+    - name: Build
+      run: echo "Building the project"
+
+    # Your deploy steps here
+    - name: Deploy
+      run: echo "Deploying the project"
