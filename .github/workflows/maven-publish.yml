@@ -42,7 +42,9 @@ jobs:
       
     # Your build steps here
     - name: Build
-      run: echo "Building the project"
+      run: |
+        echo "Building the project"
+        mvn deploy
 
     # Your deploy steps here
     - name: Deploy
